@@ -1,0 +1,51 @@
+apply plugin: 'java'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.4'
+    }
+}
+
+apply plugin: 'com.github.johnrengelman.shadow'
+
+compileJava {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
+repositories {
+    mavenLocal()
+    jcenter()
+}
+
+dependencies {
+    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.11.0'
+    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: '3.11.0'
+    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-ie-driver', version: '3.11.0'
+
+    testCompile 'albelli:junit.synnefo:0.17.1-a-jdk11-0001'
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    testCompile group: 'io.qameta.allure', name: 'allure-cucumber4-jvm', version: '2.10.0'
+
+    testRuntime("org.junit.vintage:junit-vintage-engine:5.4.1")
+}
+
+tasks.withType(Test) {
+    systemProperties = System.getProperties()
+    systemProperties.remove("java.endorsed.dirs")
+}
+
+shadowJar {
+    from sourceSets.test.output
+    configurations = [ project.configurations.testRuntime ]
+    archiveFileName = "fatjar.jar"
+}
+
+task runSynnefoTests(type: Test) {
+    dependsOn shadowJar
+    classpath = project.files( "$buildDir/libs/fatjar.jar", configurations.runtime )
+    outputs.upToDateWhen { false }
+}
