@@ -19,23 +19,23 @@ set Synnefo_bucketName=9999999999-synnefo
 
 2) Configure your AWS credentials by either using aws cli's `aws configure` or set the environment variables:
 
-![Example](./doc/set_credentials.PNG)
+![Example](./doc/set_credentials.png)
 
 3.1) Run the gradle command `gradle runSynnefoTests`:
 
-![Example](./doc/run_gradle_cmd.PNG)
+![Example](./doc/run_gradle_cmd.png)
 
 3.2) Or run the gradle task in Intellij IDEA:
 
-![Example](./doc/intellij_idea_runner.PNG)
+![Example](./doc/intellij_idea_runner.png)
 
 And wait for it to finish
 
-![Example](./doc/intellij_idea_end.PNG)
+![Example](./doc/intellij_idea_end.png)
 
 4) Go to the reporting directory: `cd build && cd synnefo` and start the allure server: `allure serve .`
 
-![Example](./doc/allure_serve.PNG)
+![Example](./doc/allure_serve.png)
 
 5) Enjoy the report
 
