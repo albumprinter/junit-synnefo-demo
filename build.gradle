@@ -23,7 +23,7 @@ repositories {
 
 dependencies {
     testCompile group: 'org.seleniumhq.selenium', name: 'selenium-chrome-driver', version: '3.11.0'
-    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: '3.11.0'
+    testCompile group: 'org.seleniumhq.selenium', name: 'selenium-firefox-driver', version: '3.141.59'
     testCompile group: 'org.seleniumhq.selenium', name: 'selenium-ie-driver', version: '3.11.0'
 
     testCompile 'albelli:junit.synnefo:0.17.1-a-jdk11-0001'
