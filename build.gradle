@@ -30,7 +30,7 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.13'
     testCompile group: 'io.qameta.allure', name: 'allure-cucumber4-jvm', version: '2.10.0'
 
-    testRuntime("org.junit.vintage:junit-vintage-engine:5.5.2")
+    testRuntime("org.junit.vintage:junit-vintage-engine:5.6.1")
 }
 
 tasks.withType(Test) {
